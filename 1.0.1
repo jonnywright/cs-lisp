@@ -1,0 +1,808 @@
+; =======================================
+;  Siemens Consultancy Services AutoLISP
+;                  1.0.1     
+;             by Jonny Wright            
+; =======================================
+
+; -------------------------------------------
+; START Switch off all non 1:200 layers START
+; -------------------------------------------
+
+; Set command name
+(defun c:STS-200()
+	; Condition checking...
+	(cond
+		(
+			; Condition
+			(and (= (getvar "TILEMODE") 1)(= (getvar "CVPORT") 2))
+			; Result
+			(princ "\nYou can't run this command in modelspace :(")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(= (getvar "CVPORT") 1))
+			(princ "\nYou have to run this command within a viewport for it to work properly")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(> (getvar "CVPORT") 1))
+
+			; Set layer prefix
+			(setq prefix "STS_") 					
+
+			; Set layer suffix
+			(setq suffix "SETOUT")
+			; Combine prefix and suffix to make layer name
+			(setq name(strcat prefix suffix))
+			; Check if layer exists...
+			(if (tblsearch "LAYER" name)
+			; ...if so, freeze off
+			(command "vplayer" "F" name "c" "" ))
+			
+			(setq suffix "LAYOUT-VP1")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "LAYOUT-VP2")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "LAYOUT-NORTHPOINT")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-CABLEDIA")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-CROSSING-TIMES")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-LOOPS")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-POLE-DEAIL")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-STAGING")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-DUCTS-1.500")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-KEY")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-LEADER-1.500")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-LOOPS-1.500")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-NOTES")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-ROADNAMES-1.500")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "SETOUT1")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "SECONDARY-VISIBILITY")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-DETECTORS-1.500")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-PHASES-1.500")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-POLE-NUMBERS-1.500")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(prompt "Setup 1:200 viewport")
+			(princ)
+		)
+		; If none of the above conditions are met
+		(t princ "This is not good... Error 01 - sorry!")
+	) ;/cond
+) ;/defun
+
+; ---------------------------------------
+; END Switch off all non 1:200 layers END
+; ---------------------------------------
+
+; -------------------------------------------
+; START Switch off all non 1:500 layers START
+; -------------------------------------------
+
+(defun c:STS-500()
+	(cond
+		(
+			(and (= (getvar "TILEMODE") 1)(= (getvar "CVPORT") 2))
+			(princ "\nYou can't run this command in modelspace :(")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(= (getvar "CVPORT") 1))
+			(princ "\nYou have to run this command within a viewport for it to work properly")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(> (getvar "CVPORT") 1))
+			
+			(setq prefix "STS_")
+			
+			(setq suffix "SETOUT")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "LAYOUT-VP1")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "LAYOUT-VP2")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-CABLEDIA")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-CROSSING-TIMES")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-LOOPS")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-POLE-DEAIL")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "STDDET-STAGING")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-DETECTORS-1.200")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-KEY")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-NOTES")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-PHASES-1.200")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-POLE-NUMBER-1.200")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "SETOUT1")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "SECONDARY-VISIBILITY")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-DUCTS-1.200")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-LEADER-1.200")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-LOOPS-1.200")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(setq suffix "TEXT-ROADNAMES-1.200")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(prompt "Setup 1:500 viewport")
+			(princ)
+		)
+		(t princ "This is not good... Error 02 - sorry!")
+	) ;/cond
+) ;/defun
+
+; ---------------------------------------
+; END Switch off all non 1:500 layers END
+; ---------------------------------------
+
+; --------------------------------------------
+; START Switch off all non 1:1000 layers START
+; --------------------------------------------
+
+(defun c:STS-1000()
+	(cond
+		(
+			(and (= (getvar "TILEMODE") 1)(= (getvar "CVPORT") 2))
+			(princ "\nYou can't run this command in modelspace :(")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(= (getvar "CVPORT") 1))
+			(princ "\nYou have to run this command within a viewport for it to work properly")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(> (getvar "CVPORT") 1))
+
+			(setq prefix "STS_")
+
+			(setq suffix "SETOUT")
+			(setq name(strcat prefix suffix))
+			(if (tblsearch "LAYER" name)
+			(command "vplayer" "F" name "c" "" ))
+
+			(prompt "Setup 1:1000 viewport")
+			(princ)
+		)
+		(t princ "This is not good... Error 03 - sorry!")
+	) ;/cond
+) ;/defun
+
+; ----------------------------------------
+; END Switch off all non 1:1000 layers END
+; ----------------------------------------
+
+; --------------------------------------
+; START Lock all visible viewports START
+; --------------------------------------
+
+(defun c:STS-LOCK()
+	(cond
+		(
+			(and (= (getvar "TILEMODE") 1)(= (getvar "CVPORT") 2))
+			(princ "\nYou can't run this command in modelspace :(")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(> (getvar "CVPORT") 1))
+			(princ "\nYou can't run this command when inside a viewport")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(= (getvar "CVPORT") 1))
+			
+			; Thaw STS_VP2 layer (to make all VPs visible)
+			(command "vplayer" "T" "STS_LAYOUT-VP2" "c" "" )
+			(setq clay (getvar "CLAYER"))
+			; Lock all viewports
+			(command "-VPORTS" "L" "ON" "ALL" "")
+			(setvar "CLAYER" clay)
+			; Freeze STS_VP2 layer (to hide viewports)
+			(command "vplayer" "F" "STS_LAYOUT-VP2" "c" "" )
+
+			(prompt "Viewports locked")
+			(princ)
+		)
+		(t princ "This is not good... Error 04 - sorry!")
+	) ;/cond
+) ;/defun
+
+; ----------------------------------
+; END Lock all visible viewports END
+; ----------------------------------
+
+; ---------------------------------------
+; START Unock all visible viewports START
+; ---------------------------------------
+
+(defun c:STS-UNLOCK()
+	(cond
+		(
+			(and (= (getvar "TILEMODE") 1)(= (getvar "CVPORT") 2))
+			(princ "\nYou can't run this command in modelspace :(")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(> (getvar "CVPORT") 1))
+			(princ "\nYou can't run this command when inside a viewport")(princ)
+		)
+		(
+			(and (= (getvar "TILEMODE") 0)(= (getvar "CVPORT") 1))
+			
+			; Thaw STS_LAYOUT-VP2 layer (to make all VPs visible)
+			(command "vplayer" "T" "STS_LAYOUT-VP2" "c" "" )		
+			(setq clay (getvar "CLAYER"))
+			; Unlock all viewports
+			(command "-VPORTS" "L" "OFF" "ALL" "")
+			(setvar "CLAYER" clay)									;
+
+			(prompt "Viewports unlocked")
+			(princ)
+		)
+		(t princ "This is not good... Error 05 - sorry!")
+	) ;/cond
+) ;/defun
+
+; -----------------------------------
+; END Unock all visible viewports END
+; -----------------------------------
+
+; ----------------------------------
+; START Create Standard layers START
+; ----------------------------------
+
+(defun c:sts-layers ()
+	; Sets the layer prefix for all layers
+	(setq prefix "STS_")
+
+	; Set layer suffix
+	(setq suffix "SETOUT")
+	; Set layer colour
+	(setq colour "cyan")
+	; Create full layer name
+	(setq name(strcat prefix suffix))
+	; If layer doesn't exist...
+	(if (not(tblsearch "LAYER" name))
+	; ...make new layer with above properties
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LAYOUT-VP1")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LAYOUT-VP2")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LAYOUT-NORTHPOINT")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LAYOUT-SCALE")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "DUCTBOXES")
+	(setq colour "green")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "DUCTS")
+	(setq colour "green")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "HARDSTANDING")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "HFS-BUFF")
+	(setq colour "42")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LINES")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LOOPS")
+	(setq colour "red")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SIGNALS")
+	(setq colour "blue")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SOCKETS")
+	(setq colour "green")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "STDDET-CABLEDIA")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "STDDET-CROSSING-TIMES")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "STDDET-LOOPS")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "STDDET-POLE-DETAIL")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "STDDET-STAGING")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TACTILES")
+	(setq colour "red")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-DETECTORS-1.200")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-DUCTS-1.500")
+	(setq colour "green")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-KEY")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-LEADER-1.500")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-LOOPS-1.500")
+	(setq colour "red")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-NOTES")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-PHASES-1.200")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-POLE-NUMBER-1.200")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-ROADNAMES-1.500")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	; Create 1:1000 text style (2.5 height in model space)
+	(command "STYLE" "Standard 1.1000" "Arial Narrow" "2.5" "" "" "" "")
+
+	; Create 1:500 text style (1.25 height in model space)
+	(command "STYLE" "Standard 1.500" "Arial Narrow" "1.25" "" "" "" "")
+
+	; Create 1:200 text style (0.5 height in model space)
+	(command "STYLE" "Standard 1.200" "Arial Narrow" "0.5" "" "" "" "")
+
+	; Set current layer
+	(setvar "CLAYER" "STS_SETOUT")
+
+	(prompt "Siemens layers created :)")
+	(princ)
+) ;/defun
+
+; ------------------------------
+; END Create Standard layers END
+; ------------------------------
+
+; ----------------------------------
+; START Create Layers extended START
+; ----------------------------------
+
+(defun c:sts-layers-ext ()
+	(setq prefix "STS_")
+
+	(setq suffix "SETOUT1")
+	(setq colour "yellow")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "CUTLINE")
+	(setq colour "13")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SECONDARY-VISIBILITY")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "DUCTBOXES-EXISTING")
+	(setq colour "magenta")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "DUCTBOXES-REMOVE")
+	(setq colour "8")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "DUCTBOXES-UTILISE")
+	(setq colour "30")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "DUCTS-EXISTING")
+	(setq colour "magenta")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "DUCTS-REMOVE")
+	(setq colour "8")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "DUCTS-UTILISE")
+	(setq colour "30")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "HFS-GREY")
+	(setq colour "8")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LOOPS-EXISTING")
+	(setq colour "magenta")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LOOPS-REMOVE")
+	(setq colour "8")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "LOOPS-UTILISE")
+	(setq colour "30")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SIGNALS-EXISTING")
+	(setq colour "magenta")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SIGNALS-REMOVE")
+	(setq colour "8")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SIGNALS-UTILISE")
+	(setq colour "30")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SOCKETS-EXISTING")
+	(setq colour "magenta")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SOCKETS-REMOVE")
+	(setq colour "8")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "SOCKETS-UTILISE")
+	(setq colour "30")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TACTILES-EXISTING")
+	(setq colour "magenta")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TACTILES-REMOVE")
+	(setq colour "8")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TACTILES-UTILISE")
+	(setq colour "30")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-DETECTORS-1.500")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-DUCTS-1.200")
+	(setq colour "green")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-LEADER-1.200")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-LOOPS-1.200")
+	(setq colour "red")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-PHASES-1.500")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-POLE-NUMBER-1.500")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(setq suffix "TEXT-ROADNAMES-1.200")
+	(setq colour "white")
+	(setq name(strcat prefix suffix))
+	(if (not(tblsearch "LAYER" name))
+	(command "_.Layer" "_Make" name "_Color" colour name \U+001B))
+
+	(prompt "Siemens 'special' layers created ;)")
+	(princ)
+) ;/defun
+
+; ------------------------------
+; END Create Layers extended END
+; ------------------------------
+
+; -----------------------
+; START Help Dialog START
+; -----------------------
+
+(defun c:STS-HELP()
+	(alert "The following commands are available;
+	\nSTS-LAYERS: Creates a standard set of layers for a typical design drawing
+	\nSTS-LAYERS-EXT: Creates an extended set of layers for more advanced drawings (existing equipment, non-standard text etc)
+	\nSTS-200: Use this command within a 1:200 scale viewport to switch off any layers which don't belong there
+	\nSTS-500: As above, but for a 1:500 viewport
+	\nSTS-1000: You get the idea
+	\nSTS-LOCK: For use in paperspace, will lock all viewports ('Display Locked')
+	\nSTS-UNLOCK: Unlocks all viewports
+	\nFull details and requirements for each commands can be found at http://tbc.com along with the full source
+	")
+) ;/defun
+
+; -------------------
+; END Help Dialog END
+; -------------------
+
+; =====================
+; START Changelog START
+; =====================
+;
+; 1.0.1		Added error control to viewport and lock/unlock commands to ensure they can only be run in the correct context.
+;			Tidy code and comments
+;			Added help command
+; ________________________________
+;
+; 1.0.0		First release
+; ________________________________
+;
+; =================
+; END Changelog END
+; =================
+
+(prompt "Siemens LISP loaded ;)")
+
+
