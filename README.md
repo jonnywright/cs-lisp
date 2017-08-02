@@ -1,5 +1,5 @@
-# cs-lisp - AutoCAD LISP Commands for automating tedious tasks
-CS LISP Commands
+# AutoCAD LISP Commands for automating tedious tasks
+A tool which has been developed to automate some of the tedious and time consuming tasks in AutoCAD. If you have any feature requests get in touch and I will try to add it in.
 
 ## Table of Contents
   1. [Installation](#installation)
@@ -69,10 +69,10 @@ The command will switch on (thaw) layer `STS_LAYOUT-VP2` on the active layout, a
 ___
 ## Layers
 ### Importance of Layer Names
-The names of the layers in the table below should not be changed. If you feel a layer name is not appropriate, issue a pull request or email jonny[dot]wright[at]siemens[dot]com. Most of the commands within this tool refer directly to the layer names, so if a layer name is updated then there is a high chance the command will break. Layer colours can be changed if absolutely necessary, without risk of breaking the tool, however this does lead to inconsistency between designs. It is understood that in certain circumstances, such as a direct customer request, this may be unavoidable.
+The names of the layers in the table below should not be changed. If you feel a layer name is not appropriate, raise an issue or email jonny[dot]wright[at]siemens[dot]com. Most of the commands within this tool refer directly to the layer names, so if a layer name is updated then there is a high chance the command will break. Layer colours can be changed if absolutely necessary, without risk of breaking the tool, however this does lead to inconsistency between designs. It is understood that in certain circumstances, such as a direct customer request, this may be unavoidable.
 
 ### Layer Name List
-The table below lists all of the layers currently built into this tool. If you feel you could improve this list, issue a pull request or email jonny[dot]wright[at]siemens[dot]com.
+The table below lists all of the layers currently built into this tool. If you feel you could improve this list, raise an issue or email jonny[dot]wright[at]siemens[dot]com.
 
 The table lists the layer name, it's colour, whether it is created as part of the [sts-layers](#sts-layers) (Standard) command, or as part of the [sts-layers-ext](#sts-layers-ext) (Extended) command. It also specifies whether or not it will be visible in specific viewport types, after running one of the viewport scale commands (eg, [sts-200](#sts-200)).
 
