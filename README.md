@@ -71,7 +71,7 @@ ___
 The tables list the layer names, their colours, and whether or not they appear in a specific viewport type after running one of the viewport scale commands (eg, [sts-200](#sts-200)).
 
 #### Standard Layers
-|Layer Name|Colour|Visible in 1:200 VP|Visible in 1:500 VP|Visible in 1:1000 VP|Expected Use|
+|Layer Name|Colour|1:200|1:500|1:1000|Expected Use|
 |-|-|:-:|:-:|:-:|-|
 |`SETOUT`|cyan||||General setting out|
 |`LAYOUT-VP1`|white|||X|Viewports which will have their border visible (eg drawing detail)|
@@ -103,7 +103,7 @@ The tables list the layer names, their colours, and whether or not they appear i
 |`TEXT-ROADNAMES-1.500`|white||X|X||
 
 #### Extended Layers
-|Layer Name|Colour|Visible in 1:200 VP|Visible in 1:500 VP|Visible in 1:1000 VP|Expected Use|
+|Layer Name|Colour|1:200|1:500|1:1000|Expected Use|
 |-|-|:-:|:-:|:-:|-|
 |`SETOUT1`|yellow|||X|Alternative setout|
 |`CUTLINE`|13|X|X|X|Cutline to another viewport|
