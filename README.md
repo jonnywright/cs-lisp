@@ -1,8 +1,8 @@
 # AutoCAD LISP Commands for automating tedious tasks
 A tool which has been developed to automate some of the tedious and time consuming tasks in AutoCAD. If you have any feature requests get in touch and I will try to add it in.
 
-### Important Note
-#### TL;DR - Don't change the layer names
+## Important Note
+### TL;DR - Don't change the layer names
 The functionality of this tool has been built around a pre-determined set of layer names. Many of the commands rely on the layer names to perform their intended function. Hence if you change a layer name, either within the code or manually within AutoCAD, there is a chance you will break some / all of the commands. If you feel a layer is badly named or could be improved, please get in touch. Other properties of the layers, such as their colour, can be changed without having any adverse effect on the tool.
 
 ## Table of Contents
