@@ -16,6 +16,8 @@ The functionality of this tool has been built around a pre-determined set of lay
      6. [sts-lock](#sts-lock)
      7. [sts-unlock](#sts-unlock)
   3. [Layers](#layers)
+     1. [Standard Layers](#standard-layers)
+     2. [Extended Layers](#extended-layers)
 ___
 ## Installation
 To use the tool, download a copy of the `.LSP` file and save it somewhere on your machine.
@@ -63,71 +65,73 @@ often used for viewports where the border should be hidden for aesthetic purpose
 The command will thaw (switch on) layer `STS_LAYOUT-VP2` on the active layout, as this is commonly used for viewports with hidden borders. It will then unlock (_Display Locked Off_) all viewports on the active layout. This command relies on proper use of layer names, as it will only thaw the `STS_LAYOUT-VP2` layer. If you have frozen any other layers within the paperspace, these will stay frozen and thus not be unlocked (AutoCAD can only unlock thawed viewports).
 ___
 ## Layers
-### Importance of Layer Names
-The names of the layers in the table below should not be changed. If you feel a layer name is not appropriate, raise an issue or email jonny[dot]wright[at]siemens[dot]com. Most of the commands within this tool refer directly to the layer names, so if a layer name is updated then there is a high chance the command will break. Layer colours can be changed if absolutely necessary, without risk of breaking the tool, however this does lead to inconsistency between designs. It is understood that in certain circumstances, such as a direct customer request, this may be unavoidable.
 
 ### Layers
 The table below lists all of the layers currently built into this tool. If you feel you could improve this list, raise an issue or email jonny[dot]wright[at]siemens[dot]com.
 
 The table lists the layer name, it's colour, whether it is created as part of the [sts-layers](#sts-layers) (Standard) command, or as part of the [sts-layers-ext](#sts-layers-ext) (Extended) command. It also specifies whether or not it will be visible in specific viewport types, after running one of the viewport scale commands (eg, [sts-200](#sts-200)).
 
-|Layer Name|Colour|Layer Set|Visible in 1:200 VP|Visible in 1:500 VP|Visible in 1:1000 VP|Expected Use|
-|-|-|-|:-:|:-:|:-:|-|
-|`SETOUT`|cyan|Standard||||General setting out|
-|`LAYOUT-VP1`|white|Standard|||X|Viewports which will have their border visible (eg drawing detail)|
-|`LAYOUT-VP2`|white|Standard|||X|Viewports which will have their border hidden (eg notes)|
-|`LAYOUT-NORTHPOINT`|white|Standard||X|X||
-|`LAYOUT-SCALE`|white|Standard|X|X|X|Scale bar|
-|`DUCTBOXES`|green|Standard|X|X|X||
-|`DUCTS`|green|Standard|X|X|X||
-|`HARDSTANDING`|white|Standard|X|X|X||
-|`HFS-BUFF`|42|Standard|X|X|X||
-|`LINES`|white|Standard|X|X|X||
-|`LOOPS`|red|Standard|X|X|X||
-|`SIGNALS`|blue|Standard|X|X|X||
-|`SOCKETS`|green|Standard|X|X|X||
-|`STDDET-CABLEDIA`|white|Standard|||X|Cable diagram|
-|`STDDET-CROSSING-TIMES`|white|Standard|||X|Crossing times table|
-|`STDDET-LOOPS`|white|Standard|||X|Loop standard detail|
-|`STDDET-POLE-DETAIL`|white|Standard|||X|Pole setting out /passive pole table|
-|`STDDET-STAGING`|white|Standard|||X|Staging diagram|
-|`TACTILES`|red|Standard|X|X|X||
-|`TEXT-DETECTORS-1.200`|white|Standard|X||X||
-|`TEXT-DUCTS-1.500`|green|Standard||X|X||
-|`TEXT-KEY`|white|Standard|||X||
-|`TEXT-LEADER-1.500`|white|Standard||X|X||
-|`TEXT-LOOPS-1.500`|red|Standard||X|X||
-|`TEXT-NOTES`|white|Standard|||X||
-|`TEXT-PHASES-1.200`|white|Standard|X||X||
-|`TEXT-POLE-NUMBER-1.200`|white|Standard|X||X||
-|`TEXT-ROADNAMES-1.500`|white|Standard||X|X||
-|`SETOUT1`|yellow|Extended|||X|Alternative setout|
-|`CUTLINE`|13|Extended|X|X|X|Cutline to another viewport|
-|`SECONDARY-VISIBILITY`|white|Extended|||X|"Secondary visibility" block|
-|`DUCTBOXES-EXISTING`|magenta|Extended|X|X|X|Existing ductboxes|
-|`DUCTBOXES-REMOVE`|8|Extended|X|X|X|Ductboxes to be removed|
-|`DUCTBOXES-UTILISE`|30|Extended|X|X|X|Ductboxes to be re-used|
-|`DUCTS-EXISTING`|magenta|Extended|X|X|X||
-|`DUCTS-REMOVE`|8|Extended|X|X|X||
-|`DUCTS-UTILISE`|30|Extended|X|X|X||
-|`HFS-GREY`|8|Extended|X|X|X||
-|`LOOPS-EXISTING`|magenta|Extended|X|X|X||
-|`LOOPS-REMOVE`|8|Extended|X|X|X||
-|`LOOPS-UTILISE`|30|Extended|X|X|X||
-|`SIGNALS-EXISTING`|magenta|Extended|X|X|X||
-|`SIGNALS-REMOVE`|8|Extended|X|X|X||
-|`SIGNALS-UTILISE`|30|Extended|X|X|X||
-|`SOCKETS-EXISTING`|magenta|Extended|X|X|X||
-|`SOCKETS-REMOVE`|8|Extended|X|X|X||
-|`SOCKETS-UTILISE`|30|Extended|X|X|X||
-|`TACTILES-EXISTING`|magenta|Extended|X|X|X||
-|`TACTILES-REMOVE`|8|Extended|X|X|X||
-|`TACTILES-UTILISE`|30|Extended|X|X|X||
-|`TEXT-DETECTORS-1.500`|white|Extended||X|X||
-|`TEXT-DUCTS-1.200`|green|Extended|X||X||
-|`TEXT-LEADER-1.200`|white|Extended|X||X||
-|`TEXT-LOOPS-1.200`|red|Extended|X||X||
-|`TEXT-PHASES-1.500`|white|Extended||X|X||
-|`TEXT-POLE-NUMBER-1.500`|white|Extended||X|X||
-|`TEXT-ROADNAMES-1.200`|white|Extended|X||X||
+#### Standard Layers
+|Layer Name|Colour|Visible in 1:200 VP|Visible in 1:500 VP|Visible in 1:1000 VP|Expected Use|
+|-|-|:-:|:-:|:-:|-|
+|`SETOUT`|cyan||||General setting out|
+|`LAYOUT-VP1`|white|||X|Viewports which will have their border visible (eg drawing detail)|
+|`LAYOUT-VP2`|white|||X|Viewports which will have their border hidden (eg notes)|
+|`LAYOUT-NORTHPOINT`|white||X|X||
+|`LAYOUT-SCALE`|white|X|X|X|Scale bar|
+|`DUCTBOXES`|green|X|X|X||
+|`DUCTS`|green|X|X|X||
+|`HARDSTANDING`|white|X|X|X||
+|`HFS-BUFF`|42|X|X|X||
+|`LINES`|white|X|X|X||
+|`LOOPS`|red|X|X|X||
+|`SIGNALS`|blue|X|X|X||
+|`SOCKETS`|green|X|X|X||
+|`STDDET-CABLEDIA`|white|||X|Cable diagram|
+|`STDDET-CROSSING-TIMES`|white|||X|Crossing times table|
+|`STDDET-LOOPS`|white|||X|Loop standard detail|
+|`STDDET-POLE-DETAIL`|white|||X|Pole setting out /passive pole table|
+|`STDDET-STAGING`|white|||X|Staging diagram|
+|`TACTILES`|red|X|X|X||
+|`TEXT-DETECTORS-1.200`|white|X||X||
+|`TEXT-DUCTS-1.500`|green||X|X||
+|`TEXT-KEY`|white|||X||
+|`TEXT-LEADER-1.500`|white||X|X||
+|`TEXT-LOOPS-1.500`|red||X|X||
+|`TEXT-NOTES`|white|||X||
+|`TEXT-PHASES-1.200`|white|X||X||
+|`TEXT-POLE-NUMBER-1.200`|white|X||X||
+|`TEXT-ROADNAMES-1.500`|white||X|X||
 
+#### Extended Layers
+|Layer Name|Colour|Visible in 1:200 VP|Visible in 1:500 VP|Visible in 1:1000 VP|Expected Use|
+|-|-|:-:|:-:|:-:|-|
+|`SETOUT1`|yellow|||X|Alternative setout|
+|`CUTLINE`|13|X|X|X|Cutline to another viewport|
+|`SECONDARY-VISIBILITY`|white|||X|"Secondary visibility" block|
+|`DUCTBOXES-EXISTING`|magenta|X|X|X|Existing ductboxes|
+|`DUCTBOXES-REMOVE`|8|X|X|X|Ductboxes to be removed|
+|`DUCTBOXES-UTILISE`|30|X|X|X|Ductboxes to be re-used|
+|`DUCTS-EXISTING`|magenta|X|X|X||
+|`DUCTS-REMOVE`|8|X|X|X||
+|`DUCTS-UTILISE`|30|X|X|X||
+|`HFS-GREY`|8|X|X|X||
+|`LOOPS-EXISTING`|magenta|X|X|X||
+|`LOOPS-REMOVE`|8|X|X|X||
+|`LOOPS-UTILISE`|30|X|X|X||
+|`SIGNALS-EXISTING`|magenta|X|X|X||
+|`SIGNALS-REMOVE`|8|X|X|X||
+|`SIGNALS-UTILISE`|30|X|X|X||
+|`SOCKETS-EXISTING`|magenta|X|X|X||
+|`SOCKETS-REMOVE`|8|X|X|X||
+|`SOCKETS-UTILISE`|30|X|X|X||
+|`TACTILES-EXISTING`|magenta|X|X|X||
+|`TACTILES-REMOVE`|8|X|X|X||
+|`TACTILES-UTILISE`|30|X|X|X||
+|`TEXT-DETECTORS-1.500`|white||X|X||
+|`TEXT-DUCTS-1.200`|green|X||X||
+|`TEXT-LEADER-1.200`|white|X||X||
+|`TEXT-LOOPS-1.200`|red|X||X||
+|`TEXT-PHASES-1.500`|white||X|X||
+|`TEXT-POLE-NUMBER-1.500`|white||X|X||
+|`TEXT-ROADNAMES-1.200`|white|X||X||
