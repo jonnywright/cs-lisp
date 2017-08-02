@@ -1,6 +1,10 @@
 # AutoCAD LISP Commands for automating tedious tasks
 A tool which has been developed to automate some of the tedious and time consuming tasks in AutoCAD. If you have any feature requests get in touch and I will try to add it in.
 
+### Important Note
+#### TL;DR - Don't change the layer names
+The functionality of this tool has been built around a pre-determined set of layer names. Many of the commands rely on the layer names to perform their intended function. Hence if you change a layer name, either within the code or manually within AutoCAD, there is a chance you will break some / all of the commands. If you feel a layer is badly named or could be improved, please get in touch. Other properties of the layers, such as their colour, can be changed without having any adverse effect on the tool.
+
 ## Table of Contents
   1. [Installation](#installation)
   2. [Commands](#commands)
@@ -12,8 +16,6 @@ A tool which has been developed to automate some of the tedious and time consumi
      6. [sts-lock](#sts-lock)
      7. [sts-unlock](#sts-unlock)
   3. [Layers](#layers)
-     1. [Importance of Layer Names](#importance-of-layer-names)
-     2. [Layer Name List](#layer-name-list)
 ___
 ## Installation
 To use the tool, download a copy of the `.LSP` file and save it somewhere on your machine.
@@ -33,9 +35,6 @@ ___
 ### `sts-layers`
 #### This command can be used anywhere within the drawing (modelspace, paperspace, within a viewport).
 Creates a 'standard' set of [layers](#layers) in AutoCAD which you would expect to need in a typical design drawing. 
-The way the layers are named is important, as other commands within this tool refer to specific layer names.
-Changing the names of layers within the code can have an adverse effect on other commands so care should be taken if you decide
-to rename any of the pre-defined layers.
 
 ### `sts-layers-ext`
 #### This command can be used anywhere within the drawing (modelspace, paperspace, within a viewport).
@@ -44,34 +43,30 @@ which is to be retained or reused. It also creates layers for non-standard text,
 
 ### `sts-200`
 #### This command can only be used when inside a viewport. It will not work when in modelspace, or within paperspace with no active viewports.
-The command will switch off (freeze) any layers which are not deemed to be required in a 1:200 viewport (such as roadnames). This command uses layer names to determine whether a layer should be switched off, hence it is important to use layers correctly, and not to rename layers which have been created using this tool.
+The command will freeze (switch off) any layers which are not deemed to be required in a 1:200 viewport (such as roadnames).
 
 ### `sts-500`
 #### This command can only be used when inside a viewport. It will not work when in modelspace, or within paperspace with no active viewports.
-The command will switch off (freeze) any layers which are not deemed to be required in a 1:500 viewport (such as pole numbers).
-This command uses layer names to determine whether a layer should be switched off, hence it is important to use layers
-correctly, and not to rename layers which have been created using this tool.
+The command will freeze (switch off) any layers which are not deemed to be required in a 1:500 viewport (such as pole numbers).
 
 ### `sts-1000`
 #### This command can only be used when inside a viewport. It will not work when in modelspace, or within paperspace with no active viewports.
-The command will switch off (freeze) any layers which are not deemed to be required in a 1:1000 viewport (such as pole numbers).
-This command uses layer names to determine whether a layer should be switched off, hence it is important to use layers
-correctly, and not to rename layers which have been created using this tool.
+The command will freeze (switch off) any layers which are not deemed to be required in a 1:1000 viewport (such as pole numbers).
 
 ### `sts-lock`
 #### This command can only be used in paperspace, not inside an active viewport.
-The command will lock all viewports on the active layout, and switch off (freeze) the layer `STS_LAYOUT-VP2` as this layer is 
+The command will lock all viewports on the active layout, and freeze (switch off) the layer `STS_LAYOUT-VP2` as this layer is 
 often used for viewports where the border should be hidden for aesthetic purposes. 
 
 ### `sts-unlock`
 #### This command can only be used in paperspace, not inside an active viewport.
-The command will switch on (thaw) layer `STS_LAYOUT-VP2` on the active layout, as this is commonly used for viewports with hidden borders (for aesthetic value). It will then unlock (Display Locked Off) all viewports on the active layout. This command relies on proper use of layer names, as it will only thaw the `STS_LAYOUT-VP2` layer. If you have frozen any other layers within the paperspace, these will stay hidden and thus not be unlocked.
+The command will thaw (switch on) layer `STS_LAYOUT-VP2` on the active layout, as this is commonly used for viewports with hidden borders. It will then unlock (_Display Locked Off_) all viewports on the active layout. This command relies on proper use of layer names, as it will only thaw the `STS_LAYOUT-VP2` layer. If you have frozen any other layers within the paperspace, these will stay frozen and thus not be unlocked (AutoCAD can only unlock thawed viewports).
 ___
 ## Layers
 ### Importance of Layer Names
 The names of the layers in the table below should not be changed. If you feel a layer name is not appropriate, raise an issue or email jonny[dot]wright[at]siemens[dot]com. Most of the commands within this tool refer directly to the layer names, so if a layer name is updated then there is a high chance the command will break. Layer colours can be changed if absolutely necessary, without risk of breaking the tool, however this does lead to inconsistency between designs. It is understood that in certain circumstances, such as a direct customer request, this may be unavoidable.
 
-### Layer Name List
+### Layers
 The table below lists all of the layers currently built into this tool. If you feel you could improve this list, raise an issue or email jonny[dot]wright[at]siemens[dot]com.
 
 The table lists the layer name, it's colour, whether it is created as part of the [sts-layers](#sts-layers) (Standard) command, or as part of the [sts-layers-ext](#sts-layers-ext) (Extended) command. It also specifies whether or not it will be visible in specific viewport types, after running one of the viewport scale commands (eg, [sts-200](#sts-200)).
