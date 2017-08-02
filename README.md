@@ -14,7 +14,7 @@ CS LISP Commands
   3. [Layers](#layers)
      1. [Importance of Layer Names](#importance-of-layer-names)
      2. [Layer Name List](#layer-name-list)
-
+___
 ## Installation
 To use the tool, download a copy of the `.LSP` file and save it somewhere on your machine.
 
