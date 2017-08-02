@@ -67,9 +67,8 @@ ___
 ## Layers
 
 ### Layers
-The table below lists all of the layers currently built into this tool. If you feel you could improve this list, raise an issue or email jonny[dot]wright[at]siemens[dot]com.
 
-The table lists the layer name, it's colour, whether it is created as part of the [sts-layers](#sts-layers) (Standard) command, or as part of the [sts-layers-ext](#sts-layers-ext) (Extended) command. It also specifies whether or not it will be visible in specific viewport types, after running one of the viewport scale commands (eg, [sts-200](#sts-200)).
+The tables list the layer names, their colours, and whether or not they appear in a specific viewport type after running one of the viewport scale commands (eg, [sts-200](#sts-200)).
 
 #### Standard Layers
 |Layer Name|Colour|Visible in 1:200 VP|Visible in 1:500 VP|Visible in 1:1000 VP|Expected Use|
