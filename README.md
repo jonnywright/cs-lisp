@@ -76,31 +76,31 @@ The tables list the layer names, their colours, and whether or not they appear i
 |`SETOUT`|cyan||||General setting out|
 |`LAYOUT-VP1`|white|||X|Viewports which will have their border visible (eg drawing detail)|
 |`LAYOUT-VP2`|white|||X|Viewports which will have their border hidden (eg notes)|
-|`LAYOUT-NORTHPOINT`|white||X|X||
+|`LAYOUT-NORTHPOINT`|white||X|X|Northpoint|
 |`LAYOUT-SCALE`|white|X|X|X|Scale bar|
-|`DUCTBOXES`|green|X|X|X||
-|`DUCTS`|green|X|X|X||
-|`HARDSTANDING`|white|X|X|X||
-|`HFS-BUFF`|42|X|X|X||
-|`LINES`|white|X|X|X||
-|`LOOPS`|red|X|X|X||
-|`SIGNALS`|blue|X|X|X||
-|`SOCKETS`|green|X|X|X||
+|`DUCTBOXES`|green|X|X|X|Signal ductboxes|
+|`DUCTS`|green|X|X|X|Signal ducting|
+|`HARDSTANDING`|white|X|X|X|Hardstanding|
+|`HFS-BUFF`|42|X|X|X|High Friction Surface / High PSV Surface|
+|`LINES`|white|X|X|X|Lining|
+|`LOOPS`|red|X|X|X|Signal loops|
+|`SIGNALS`|blue|X|X|X|Traffic signal equipment|
+|`SOCKETS`|green|X|X|X|Pole sockets|
 |`STDDET-CABLEDIA`|white|||X|Cable diagram|
 |`STDDET-CROSSING-TIMES`|white|||X|Crossing times table|
 |`STDDET-LOOPS`|white|||X|Loop standard detail|
 |`STDDET-POLE-DETAIL`|white|||X|Pole setting out /passive pole table|
 |`STDDET-STAGING`|white|||X|Staging diagram|
-|`TACTILES`|red|X|X|X||
-|`TEXT-DETECTORS-1.200`|white|X||X||
-|`TEXT-DUCTS-1.500`|green||X|X||
-|`TEXT-KEY`|white|||X||
-|`TEXT-LEADER-1.500`|white||X|X||
-|`TEXT-LOOPS-1.500`|red||X|X||
-|`TEXT-NOTES`|white|||X||
-|`TEXT-PHASES-1.200`|white|X||X||
-|`TEXT-POLE-NUMBER-1.200`|white|X||X||
-|`TEXT-ROADNAMES-1.500`|white||X|X||
+|`TACTILES`|red|X|X|X|Tactile Paving|
+|`TEXT-DETECTORS-1.200`|white|X||X|Detector lables for a 1:200 viewport (text height 0.5)|
+|`TEXT-DUCTS-1.500`|green||X|X|Ducting text for a 1:500 viewport (if using the associated ducting linetype)|
+|`TEXT-KEY`|white|||X|Key text|
+|`TEXT-LEADER-1.500`|white||X|X|Text with a leader for a 1:500 viewport (text height 1.25)|
+|`TEXT-LOOPS-1.500`|red||X|X|Loop labels for a 1:500 viewport (text height 1.25)|
+|`TEXT-NOTES`|white|||X|Notes|
+|`TEXT-PHASES-1.200`|white|X||X|Phase labels for a 1:200 viewport (text height 0.5)|
+|`TEXT-POLE-NUMBER-1.200`|white|X||X|Pole numbers for a 1:200 viewport (text height 0.5)|
+|`TEXT-ROADNAMES-1.500`|white||X|X|Roadname labels for a 1:500 viewport (text height 1.25)|
 
 #### Extended Layers
 |Layer Name|Colour|1:200|1:500|1:1000|Expected Use|
@@ -111,26 +111,26 @@ The tables list the layer names, their colours, and whether or not they appear i
 |`DUCTBOXES-EXISTING`|magenta|X|X|X|Existing ductboxes|
 |`DUCTBOXES-REMOVE`|8|X|X|X|Ductboxes to be removed|
 |`DUCTBOXES-UTILISE`|30|X|X|X|Ductboxes to be re-used|
-|`DUCTS-EXISTING`|magenta|X|X|X||
-|`DUCTS-REMOVE`|8|X|X|X||
-|`DUCTS-UTILISE`|30|X|X|X||
-|`HFS-GREY`|8|X|X|X||
-|`LOOPS-EXISTING`|magenta|X|X|X||
-|`LOOPS-REMOVE`|8|X|X|X||
-|`LOOPS-UTILISE`|30|X|X|X||
-|`SIGNALS-EXISTING`|magenta|X|X|X||
-|`SIGNALS-REMOVE`|8|X|X|X||
-|`SIGNALS-UTILISE`|30|X|X|X||
-|`SOCKETS-EXISTING`|magenta|X|X|X||
-|`SOCKETS-REMOVE`|8|X|X|X||
-|`SOCKETS-UTILISE`|30|X|X|X||
-|`TACTILES-EXISTING`|magenta|X|X|X||
-|`TACTILES-REMOVE`|8|X|X|X||
-|`TACTILES-UTILISE`|30|X|X|X||
-|`TEXT-DETECTORS-1.500`|white||X|X||
-|`TEXT-DUCTS-1.200`|green|X||X||
-|`TEXT-LEADER-1.200`|white|X||X||
-|`TEXT-LOOPS-1.200`|red|X||X||
-|`TEXT-PHASES-1.500`|white||X|X||
-|`TEXT-POLE-NUMBER-1.500`|white||X|X||
-|`TEXT-ROADNAMES-1.200`|white|X||X||
+|`DUCTS-EXISTING`|magenta|X|X|X|Existing ducts|
+|`DUCTS-REMOVE`|8|X|X|X|Ducts to be removed|
+|`DUCTS-UTILISE`|30|X|X|X|Ducts to be re-used|
+|`HFS-GREY`|8|X|X|X|Alternative layer for High Friction Surfacing / High PSV Surfacing|
+|`LOOPS-EXISTING`|magenta|X|X|X|Existing loop detectors|
+|`LOOPS-REMOVE`|8|X|X|X|Loop detectors to be removed|
+|`LOOPS-UTILISE`|30|X|X|X|Loop detectors to be re-used|
+|`SIGNALS-EXISTING`|magenta|X|X|X|Existing signal equipment|
+|`SIGNALS-REMOVE`|8|X|X|X|Signal equipment to be removed|
+|`SIGNALS-UTILISE`|30|X|X|X|Signal equipment to be re-used|
+|`SOCKETS-EXISTING`|magenta|X|X|X|Existing pole sockets|
+|`SOCKETS-REMOVE`|8|X|X|X|Pole sockets to be removed|
+|`SOCKETS-UTILISE`|30|X|X|X|Poel sockets to be re-used|
+|`TACTILES-EXISTING`|magenta|X|X|X|Existing tactile paving|
+|`TACTILES-REMOVE`|8|X|X|X|Tactile paving to be removed|
+|`TACTILES-UTILISE`|30|X|X|X|Tactile paving to be re-used|
+|`TEXT-DETECTORS-1.500`|white||X|X|Detector labels for a 1:500 viewport (text height 1.25)|
+|`TEXT-DUCTS-1.200`|green|X||X|Ducting text for a 1:200 viewport (if using the associated ducting linetype)|
+|`TEXT-LEADER-1.200`|white|X||X|Text with a leader for a 1:200 viewport (text height 0.5)|
+|`TEXT-LOOPS-1.200`|red|X||X|Loop labels for a 1:200 viewport (text height 0.5)|
+|`TEXT-PHASES-1.500`|white||X|X|Phase labels for a 1:500 viewport (text height 1.25)|
+|`TEXT-POLE-NUMBER-1.500`|white||X|X|Pole  numbers for a 1:500 viewport (text height 1.25)|
+|`TEXT-ROADNAMES-1.200`|white|X||X|Roadname labls for a 1:200 viewport (text height 0.5)|
