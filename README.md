@@ -1,5 +1,5 @@
 # AutoCAD LISP Commands for automating tedious tasks
-A tool which has been developed to automate some of the tedious and time consuming tasks in AutoCAD. If you have any feature requests get in touch and I will try to add it in.
+A tool which has been developed to automate some of the tedious and time consuming tasks in AutoCAD. If you have any feature requesie get in touch and I will try to add it in.
 
 ## Important Note
 ### TL;DR - Don't change the layer names
@@ -8,13 +8,13 @@ The functionality of this tool has been built around a pre-determined set of lay
 ## Table of Contents
   1. [Installation](#installation)
   2. [Commands](#commands)
-     1. [sts-layers](#sts-layers)
-     2. [sts-layers-ext](#sts-layers-ext)
-     3. [sts-200](#sts-200)
-     4. [sts-500](#sts-500)
-     5. [sts-1000](#sts-1000)
-     6. [sts-lock](#sts-lock)
-     7. [sts-unlock](#sts-unlock)
+     1. [sie-layers](#sie-layers)
+     2. [sie-layers-ext](#sie-layers-ext)
+     3. [sie-200](#sie-200)
+     4. [sie-500](#sie-500)
+     5. [sie-1000](#sie-1000)
+     6. [sie-lock](#sie-lock)
+     7. [sie-unlock](#sie-unlock)
   3. [Layers](#layers)
      1. [Standard Layers](#standard-layers)
      2. [Extended Layers](#extended-layers)
@@ -34,41 +34,41 @@ Within AutoCAD click on;
 The script should now load everytime you start AutoCAD.
 ___
 ## Commands
-### `sts-layers`
+### `sie-layers`
 #### This command can be used anywhere within the drawing (modelspace, paperspace, within a viewport).
 Creates a 'standard' set of [layers](#layers) in AutoCAD which you would expect to need in a typical design drawing. 
 
-### `sts-layers-ext`
+### `sie-layers-ext`
 #### This command can be used anywhere within the drawing (modelspace, paperspace, within a viewport).
 Creates an extended set of [layers](#layers) for more complex design drawings. It includes layers for items such as existing equipment
 which is to be retained or reused. It also creates layers for non-standard text, such as roadnames in a 1:200 viewport.
 
-### `sts-200`
+### `sie-200`
 #### This command can only be used when inside a viewport. It will not work when in modelspace, or within paperspace with no active viewports.
 The command will freeze (switch off) any layers which are not deemed to be required in a 1:200 viewport (such as roadnames).
 
-### `sts-500`
+### `sie-500`
 #### This command can only be used when inside a viewport. It will not work when in modelspace, or within paperspace with no active viewports.
 The command will freeze (switch off) any layers which are not deemed to be required in a 1:500 viewport (such as pole numbers).
 
-### `sts-1000`
+### `sie-1000`
 #### This command can only be used when inside a viewport. It will not work when in modelspace, or within paperspace with no active viewports.
 The command will freeze (switch off) any layers which are not deemed to be required in a 1:1000 viewport (such as pole numbers).
 
-### `sts-lock`
+### `sie-lock`
 #### This command can only be used in paperspace, not inside an active viewport.
-The command will lock all viewports on the active layout, and freeze (switch off) the layer `STS_LAYOUT-VP2` as this layer is 
+The command will lock all viewports on the active layout, and freeze (switch off) the layer `sie_LAYOUT-VP2` as this layer is 
 often used for viewports where the border should be hidden for aesthetic purposes. 
 
-### `sts-unlock`
+### `sie-unlock`
 #### This command can only be used in paperspace, not inside an active viewport.
-The command will thaw (switch on) layer `STS_LAYOUT-VP2` on the active layout, as this is commonly used for viewports with hidden borders. It will then unlock (_Display Locked Off_) all viewports on the active layout. This command relies on proper use of layer names, as it will only thaw the `STS_LAYOUT-VP2` layer. If you have frozen any other layers within the paperspace, these will stay frozen and thus not be unlocked (AutoCAD can only unlock thawed viewports).
+The command will thaw (switch on) layer `sie_LAYOUT-VP2` on the active layout, as this is commonly used for viewports with hidden borders. It will then unlock (_Display Locked Off_) all viewports on the active layout. This command relies on proper use of layer names, as it will only thaw the `sie_LAYOUT-VP2` layer. If you have frozen any other layers within the paperspace, these will stay frozen and thus not be unlocked (AutoCAD can only unlock thawed viewports).
 ___
 ## Layers
 
 ### Layers
 
-The tables list the layer names, their colours, and whether or not they appear in a specific viewport type after running one of the viewport scale commands (eg, [sts-200](#sts-200)).
+The tables list the layer names, their colours, and whether or not they appear in a specific viewport type after running one of the viewport scale commands (eg, [sie-200](#sie-200)).
 
 #### Standard Layers
 |Layer Name|Colour|1:200|1:500|1:1000|Expected Use|
